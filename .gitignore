@@ -1,0 +1,6 @@
+**/output/
+*.exe
+*.out
+a.out
+**/.env*
+**/.DS_Store
