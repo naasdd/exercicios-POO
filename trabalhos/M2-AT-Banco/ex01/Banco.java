@@ -9,10 +9,28 @@ public class Banco {
         this.numero = numero;
     }
 
+    public void criarConta(double saldoInicial) {
+        int num = totalContas + 1;
+        contas[totalContas++] = new ContaCorrente(num, saldoInicial);
+        System.out.println("Conta " + num + " criada.");
+    }
+
     public void criarConta(double saldoInicial, double limite) {
         int num = totalContas + 1;
         contas[totalContas++] = new ContaCorrente(num, saldoInicial, limite);
         System.out.println("Conta " + num + " criada.");
+    }
+
+    public void depositar(int conta, double valor) {
+        ContaCorrente c = localizarConta(conta);
+        if (c != null)
+            c.depositar(valor);
+    }
+
+    public void emitirExtrato(int conta) {
+        ContaCorrente c = localizarConta(conta);
+        if (c != null)
+            System.out.println(c.emitirExtrato());
     }
 
     public void excluirConta(int conta) {
@@ -25,34 +43,29 @@ public class Banco {
         }
     }
 
-    public ContaCorrente localizarConta(int conta) {
+    private ContaCorrente localizarConta(int conta) {
         for (int i = 0; i < totalContas; i++) {
-            if (contas[i].getNumeroConta() == conta) return contas[i];
+            if (contas[i].getNumeroConta() == conta)
+                return contas[i];
         }
         return null;
     }
 
-    public void depositar(int conta, double valor) {
-        ContaCorrente c = localizarConta(conta);
-        if (c != null) c.depositar(valor);
-    }
-
     public void sacar(int conta, double valor) {
         ContaCorrente c = localizarConta(conta);
-        if (c != null && !c.sacar(valor)) System.out.println("Saldo insuficiente.");
+        if (c != null && !c.sacar(valor))
+            System.out.println("Saldo insuficiente.");
     }
 
     public void transferir(int contaOrigem, int contaDestino, double valor) {
         ContaCorrente origem = localizarConta(contaOrigem);
         ContaCorrente destino = localizarConta(contaDestino);
         if (origem != null && destino != null) {
-            if (origem.sacar(valor)) destino.depositar(valor);
-            else System.out.println("Saldo insuficiente para transferencia.");
+            if (origem.sacar(valor))
+                destino.depositar(valor);
+            else
+                System.out.println("Saldo insuficiente para transferencia.");
         }
     }
 
-    public void emitirExtrato(int conta) {
-        ContaCorrente c = localizarConta(conta);
-        if (c != null) System.out.println(c.emitirExtrato());
-    }
 }
