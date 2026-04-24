@@ -3,4 +3,7 @@
 *.out
 a.out
 **/.env*
+**/.vscode
 **/.DS_Store
+*.class
+*.zip
