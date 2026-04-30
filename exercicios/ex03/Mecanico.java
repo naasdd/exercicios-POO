@@ -1,0 +1,3 @@
+class Mecanico {
+    String nome;
+}

@@ -1,11 +1,11 @@
-public class FormaPagamento{
-    private String descricao;
+class FormaPagamento {
+    String descricao;
 
-    public String getDescricao() {
+    public String getdescricao() {
         return descricao;
     }
-    
-    public void setDescricao(String descricao) {
+
+    public void setdescricao(String descricao) {
         this.descricao = descricao;
     }
 }

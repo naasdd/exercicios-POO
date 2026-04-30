@@ -1,0 +1,3 @@
+class Autodromo {
+    String local;
+}

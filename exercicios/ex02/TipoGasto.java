@@ -1,11 +1,12 @@
-public class TipoGasto{
-    private String descricao;
 
-    public String getDescricao() {
+class TipoGasto {
+    String descricao;
+
+    public String getdescricao() {
         return descricao;
     }
-    
-    public void setDescricao(String descricao) {
+
+    public void setdescricao(String descricao) {
         this.descricao = descricao;
     }
 }

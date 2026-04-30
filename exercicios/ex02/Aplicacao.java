@@ -1,41 +1,36 @@
 import java.util.Date;
 
-public class Aplicacao{
-    public TipoGasto tipos;
-    public FormaPagamento formas;
+class Aplicacao {
+    TipoGasto[] tipos = new TipoGasto[10];
+    FormaPagamento[] formas = new FormaPagamento[10];
+    Gasto[] gastos = new Gasto[100];
 
-    
-    public void adicionarFormaPagamento(FormaPagamento forma){
+    int qtdTipos = 0;
+    int qtdFormas = 0;
+    int qtdGastos = 0;
 
+    public void adicionarFormaPagamento(FormaPagamento forma) {
+        formas[qtdFormas++] = forma;
     }
 
-    public void adicionarTipoGasto(TipoGasto gasto){
-
+    public void adicionarTipoGasto(TipoGasto tipo) {
+        tipos[qtdTipos++] = tipo;
     }
 
-    public void listarGastos(int mes, int ano){
+    public void listarGastos(int mes, int ano) {
+        for (int i = 0; i < qtdGastos; i++) {
+            Gasto g = gastos[i];
 
-    }
+            int m = g.data.getMonth() + 1;
+            int a = g.data.getYear() + 1900;
 
-    public void novoGasto(String descricao, Date data, double valor, TipoGasto tipo, FormaPagamento forma){
-
-    }
-
-    public class Gasto{
-        private Date data;
-        private String descricao;
-        private double valor;
-        private TipoGasto tipo;
-        private FormaPagamento forma;
-    
-        public Gasto(Date data, String descricao, double valor, TipoGasto gasto, FormaPagamento forma){
-    
-    
+            if (m == mes && a == ano) {
+                System.out.println(g.obterDescricao());
+            }
         }
-    
-        public String obterDescricao(){
-    
-            return this.descricao;
-        }
+    }
+
+    public void novoGasto(String descricao, Date data, double valor, TipoGasto tipo, FormaPagamento forma) {
+        gastos[qtdGastos++] = new Gasto(data, descricao, valor, tipo, forma);
     }
 }

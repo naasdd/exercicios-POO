@@ -1,17 +1,21 @@
 import java.util.Date;
 
-public class Gasto{
-    private Date data;
-    private String descricao;
-    private double valor;
+class Gasto {
+    Date data;
+    String descricao;
+    double valor;
+    TipoGasto tipo;
+    FormaPagamento forma;
 
-    public Gasto(Date data, String descricao, double valor, TipoGasto gasto, FormaPagamento forma){
-
-
+    public Gasto(Date data, String descricao, double valor, TipoGasto tipo, FormaPagamento forma) {
+        this.data = data;
+        this.descricao = descricao;
+        this.valor = valor;
+        this.tipo = tipo;
+        this.forma = forma;
     }
 
-    public String obterDescricao(){
-
-        return this.descricao;
+    public String obterDescricao() {
+        return descricao;
     }
 }
