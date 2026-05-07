@@ -9,8 +9,5 @@ public abstract class Animal {
 
     public abstract String emitirSom();
 
-    public String realizarComportamento() {
-
-        return "Ação do animal";
-    }
+    public abstract String realizarComportamento();
 }
